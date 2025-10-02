@@ -1,5 +1,5 @@
 import { StellarService } from '@/lib/stellar';
-import { TransactionBuilder, Operation, Keypair } from 'stellar-sdk';
+import { TransactionBuilder, Operation, Keypair } from '@/lib/stellar';
 
 export interface Rating {
   fromUser: string;

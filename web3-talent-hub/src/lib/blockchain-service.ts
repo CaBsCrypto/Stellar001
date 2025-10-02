@@ -2,7 +2,7 @@ import { UserRegistryContract } from '@/contracts/user-registry';
 import { ReputationSystemContract } from '@/contracts/reputation-system';
 import { StellarService } from './stellar';
 import { FreighterService } from './freighter';
-import { Keypair } from 'stellar-sdk';
+import { Keypair } from './stellar';
 
 export interface ProfileData {
   displayName: string;

@@ -1,19 +1,26 @@
-import { Server, Networks, Keypair, TransactionBuilder, Operation, Asset } from 'stellar-sdk';
+import * as StellarSdk from 'stellar-sdk';
 
 // Stellar configuration
 export const STELLAR_CONFIG = {
   network: process.env.NEXT_PUBLIC_STELLAR_NETWORK || 'testnet',
   horizonUrl: process.env.NEXT_PUBLIC_STELLAR_HORIZON_URL || 'https://horizon-testnet.stellar.org',
-  networkPassphrase: process.env.NEXT_PUBLIC_STELLAR_PASSPHRASE || Networks.TESTNET,
+  networkPassphrase: process.env.NEXT_PUBLIC_STELLAR_PASSPHRASE || StellarSdk.Networks.TESTNET,
 };
 
-// Initialize Stellar server
-export const server = new Server(STELLAR_CONFIG.horizonUrl);
+// Initialize Stellar server (client-side only)
+export const getServer = () => {
+  if (typeof window === 'undefined') {
+    return null; // Return null on server-side
+  }
+  return new StellarSdk.Server(STELLAR_CONFIG.horizonUrl);
+};
 
 // Utility functions for Stellar operations
 export class StellarService {
   static async getAccount(publicKey: string) {
     try {
+      const server = getServer();
+      if (!server) throw new Error('Server not available on server-side');
       return await server.loadAccount(publicKey);
     } catch (error) {
       console.error('Error loading account:', error);
@@ -23,6 +30,8 @@ export class StellarService {
 
   static async submitTransaction(transaction: any) {
     try {
+      const server = getServer();
+      if (!server) throw new Error('Server not available on server-side');
       const result = await server.submitTransaction(transaction);
       return result;
     } catch (error) {
@@ -32,7 +41,7 @@ export class StellarService {
   }
 
   static generateKeypair() {
-    return Keypair.random();
+    return StellarSdk.Keypair.random();
   }
 
   static async fundTestnetAccount(publicKey: string) {
@@ -48,4 +57,4 @@ export class StellarService {
   }
 }
 
-export { Networks, Keypair, TransactionBuilder, Operation, Asset };
+export const { Networks, Keypair, TransactionBuilder, Operation, Asset } = StellarSdk;
