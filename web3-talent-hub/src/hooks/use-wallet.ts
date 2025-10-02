@@ -49,3 +49,4 @@ export function useWallet() {
     combinedError: walletStore.error || userStore.error,
   };
 }
+

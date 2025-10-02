@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Header } from '@/components/header';
 import { Button } from '@/components/ui/button';
+import { FreighterTest } from '@/components/freighter-test';
 import { Users, Star, Shield, Zap, ArrowRight, Play } from 'lucide-react';
 
 export default function Home() {
@@ -36,6 +37,11 @@ export default function Home() {
               </Link>
             </Button>
           </div>
+        </div>
+        
+        {/* Debug Tool - Remove in production */}
+        <div className="max-w-2xl mx-auto mt-8">
+          <FreighterTest />
         </div>
       </section>
 

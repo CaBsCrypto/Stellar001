@@ -186,3 +186,4 @@ export interface SearchResult<T> {
   limit: number;
   hasMore: boolean;
 }
+

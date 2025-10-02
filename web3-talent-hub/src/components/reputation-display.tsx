@@ -172,3 +172,4 @@ export function ReputationDisplay({ reputation, showDetails = false }: Reputatio
     </div>
   );
 }
+

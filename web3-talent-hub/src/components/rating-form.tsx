@@ -161,3 +161,4 @@ export function RatingForm({ targetPublicKey, onSubmit, onCancel, isLoading }: R
     </div>
   );
 }
+

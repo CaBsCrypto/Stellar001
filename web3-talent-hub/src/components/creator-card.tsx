@@ -162,3 +162,4 @@ export function CreatorCard({ creator }: CreatorCardProps) {
     </div>
   );
 }
+

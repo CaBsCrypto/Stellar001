@@ -227,3 +227,4 @@ export function CreatorsFilter({ filters, onFiltersChange, onClearFilters }: Cre
     </div>
   );
 }
+

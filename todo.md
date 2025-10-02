@@ -255,3 +255,4 @@ IPFS_GATEWAY=...
 **🔥 MANTRA DEL MVP: "Mejor hacer una cosa excelente que muchas cosas mediocres"**
 
 **🎯 FOCUS: Creadores de contenido → Perfiles → Reputación → Colaboraciones**
+
